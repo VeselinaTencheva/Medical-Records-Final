@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <title>Electronic Medical Record System</title>
+    <meta charset="UTF-8">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/common.css}"/>
+</head>
+
+<header th:fragment="header" class=" p-3" style="background-color: #8ba38c; color: whitesmoke; width: 100%;">
+<!--    <div class=" p-3">-->
+        <h1 class="font-weight-bold">Electronic Medical Record System</h1>
+<!--    </div>-->
+</header>
+
+<side-nav>
+    <div class="sidenav h-100 mt-auto mb-auto">
+        <a href="#">My Profile</a>
+        <a href="/appointments">Appointments</a>
+        <a href="/patients">Patients</a>
+        <a href="/physicians">Physicians</a>
+<!--        <a href="#">Medical Specialists</a>-->
+        <a href="/diagnosis">Diagnosis</a>
+        <a href="/sick-leaves">Sick Leaves</a>
+        <a href="/treatments">Treatments</a>
+        <a href="#">About</a>
+    </div>
+</side-nav>
+
+<footer page-footer font-small>
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="#"> School Management System</a>
+    </div>
+</footer>
+
+</html>
