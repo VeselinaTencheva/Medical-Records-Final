@@ -1,16 +1,16 @@
 package com.example.Medical.Records.v10.service.diagnosis;
 
+import com.example.Medical.Records.v10.data.entity.Appointment;
 import com.example.Medical.Records.v10.data.entity.Diagnosis;
-import com.example.Medical.Records.v10.data.entity.Patient;
 import com.example.Medical.Records.v10.data.repository.DiagnosisRepository;
 import com.example.Medical.Records.v10.dto.diagnoses.CreateDiagnoseDTO;
 import com.example.Medical.Records.v10.dto.diagnoses.DiagnoseDTO;
 import com.example.Medical.Records.v10.dto.diagnoses.UpdateDiagnoseDTO;
-import com.example.Medical.Records.v10.dto.patient.PatientDTO;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,6 +26,19 @@ public class DiagnosisServiceImpl implements DiagnosisService{
         return diagnosisRepository.findAll().stream()
                 .map(this::convertToDiagnoseDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<DiagnoseDTO> findAllByAppointments(List<Appointment> appointments) {
+        ArrayList<DiagnoseDTO> diagnoses = new ArrayList<>();
+        appointments
+                .stream()
+                .map((appointment) ->
+                        diagnoses.add(
+                            convertToDiagnoseDTO(this.diagnosisRepository.findByAppointments(appointment)))
+                );
+
+        return diagnoses.stream().collect(Collectors.toList());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.Medical.Records.v10.service.diagnosis;
 
+import com.example.Medical.Records.v10.data.entity.Appointment;
 import com.example.Medical.Records.v10.data.entity.Diagnosis;
 import com.example.Medical.Records.v10.dto.diagnoses.CreateDiagnoseDTO;
 import com.example.Medical.Records.v10.dto.diagnoses.DiagnoseDTO;
@@ -9,6 +10,8 @@ import java.util.List;
 
 public interface DiagnosisService {
     List<DiagnoseDTO> findAll();
+
+    List<DiagnoseDTO> findAllByAppointments(List<Appointment> appointments);
 
     DiagnoseDTO findById(Long id);
 

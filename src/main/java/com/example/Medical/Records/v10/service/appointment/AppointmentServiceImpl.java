@@ -59,6 +59,13 @@ public class AppointmentServiceImpl implements AppointmentService{
     }
 
     @Override
+    public List<AppointmentDTO> findAppointmentsByPatient(Patient patient) {
+        return appointmentRepository.findAllByPatient(patient).stream()
+                .map(this::convertToAppointmentDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public void delete(Long id) {
         this.appointmentRepository.deleteById(id);
     }

@@ -1,10 +1,18 @@
 package com.example.Medical.Records.v10.service.patient;
 
+import com.example.Medical.Records.v10.data.entity.Appointment;
+import com.example.Medical.Records.v10.data.entity.Diagnosis;
 import com.example.Medical.Records.v10.data.entity.Patient;
+import com.example.Medical.Records.v10.data.repository.AppointmentRepository;
+import com.example.Medical.Records.v10.data.repository.DiagnosisRepository;
 import com.example.Medical.Records.v10.data.repository.PatientRepository;
+import com.example.Medical.Records.v10.dto.appointment.AppointmentDTO;
+import com.example.Medical.Records.v10.dto.diagnoses.DiagnoseDTO;
 import com.example.Medical.Records.v10.dto.patient.CreatePatientDTO;
 import com.example.Medical.Records.v10.dto.patient.PatientDTO;
 import com.example.Medical.Records.v10.dto.patient.UpdatePatientDTO;
+import com.example.Medical.Records.v10.service.appointment.AppointmentService;
+import com.example.Medical.Records.v10.service.diagnosis.DiagnosisService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -18,11 +26,24 @@ public class PatientServiceImpl implements PatientService {
     private final PatientRepository patientRepository;
     private final ModelMapper modelMapper;
 
+    private final DiagnosisService diagnosisService;
+    private final AppointmentService appointmentService;
+//    private final DiagnosisRepository diagnosisRepository;
+//    private final AppointmentRepository appointmentRepository;
+
     @Override
     public List<PatientDTO> findAll() {
         return patientRepository.findAll().stream()
                 .map(this::convertToPatientDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<DiagnoseDTO> findAllDiagnosesPerPatient(long id) {
+        List<AppointmentDTO> appointmentsDTO = appointmentService.findAppointmentsByPatient(modelMapper.map(findById(id), Patient.class));
+        List<Appointment> appointments = appointmentsDTO.stream().map((appointmentDTO) -> modelMapper.map(appointmentDTO, Appointment.class)).collect(Collectors.toList());
+        List<DiagnoseDTO> diagnoses = diagnosisService.findAllByAppointments(appointments);
+        return diagnoses;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.Medical.Records.v10.data.view.controller;
 
 import com.example.Medical.Records.v10.data.entity.Patient;
+import com.example.Medical.Records.v10.data.view.model.diagnoses.DiagnoseViewModel;
 import com.example.Medical.Records.v10.data.view.model.patients.CreatePatientViewModel;
 import com.example.Medical.Records.v10.data.view.model.patients.PatientViewModel;
 import com.example.Medical.Records.v10.data.view.model.patients.UpdatePatientViewModel;
@@ -40,6 +41,16 @@ public class PatientController {
         model.addAttribute("patients", patients);
 
         return "patients/patients";
+    }
+
+    @GetMapping("/{id}/diagnoses")
+    public String getPatientsDiagnoses(Model model,  @PathVariable Long id) {
+        final List<DiagnoseViewModel> diagnoses =
+                patientService.findAllDiagnosesPerPatient(id).stream()
+                        .map((el) -> this.modelMapper.map(el, DiagnoseViewModel.class))
+                        .collect(Collectors.toList());
+        model.addAttribute("diagnoses", diagnoses);
+        return "/diagnoses/all";
     }
 
     @GetMapping("/create")
