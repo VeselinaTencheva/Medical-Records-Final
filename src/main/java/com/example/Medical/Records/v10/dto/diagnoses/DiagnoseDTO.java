@@ -13,4 +13,5 @@ public class DiagnoseDTO {
     private long id;
     private String name;
     private String description;
+    private int patientsCount;
 }

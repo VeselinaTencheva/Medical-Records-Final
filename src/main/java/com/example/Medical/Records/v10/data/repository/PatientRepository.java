@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 //    List<> findAllBy(Patient patient);
-
+//        this one is the actual problem
+        List<Patient> findDistinctByAppointmentsIn(List<Appointment> appointments);
 }

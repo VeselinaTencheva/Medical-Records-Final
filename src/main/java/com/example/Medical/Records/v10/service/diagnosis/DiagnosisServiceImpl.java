@@ -2,7 +2,9 @@ package com.example.Medical.Records.v10.service.diagnosis;
 
 import com.example.Medical.Records.v10.data.entity.Appointment;
 import com.example.Medical.Records.v10.data.entity.Diagnosis;
+import com.example.Medical.Records.v10.data.repository.AppointmentRepository;
 import com.example.Medical.Records.v10.data.repository.DiagnosisRepository;
+import com.example.Medical.Records.v10.data.repository.PatientRepository;
 import com.example.Medical.Records.v10.dto.diagnoses.CreateDiagnoseDTO;
 import com.example.Medical.Records.v10.dto.diagnoses.DiagnoseDTO;
 import com.example.Medical.Records.v10.dto.diagnoses.UpdateDiagnoseDTO;
@@ -19,26 +21,36 @@ import java.util.stream.Collectors;
 public class DiagnosisServiceImpl implements DiagnosisService{
 
     private final DiagnosisRepository diagnosisRepository;
+
+    private final AppointmentRepository appointmentRepository;
+    private final PatientRepository patientRepository;
     private final ModelMapper modelMapper;
 
     @Override
     public List<DiagnoseDTO> findAll() {
-        return diagnosisRepository.findAll().stream()
-                .map(this::convertToDiagnoseDTO)
-                .collect(Collectors.toList());
+        List<Diagnosis> diagnoses = diagnosisRepository.findAll();
+        List<DiagnoseDTO> diagnoseDTOS = new ArrayList<>();
+        diagnoses.forEach(
+                diagnosis -> {
+                    List<Appointment> appointments = appointmentRepository.findAllByDiagnosis(diagnosis);
+                    int patientCount = patientRepository.findDistinctByAppointmentsIn(appointments).size();
+                    DiagnoseDTO diagnoseDTO = convertToDiagnoseDTO(diagnosis);
+                    diagnoseDTO.setPatientsCount(patientCount);
+                    diagnoseDTOS.add(diagnoseDTO);
+                }
+        );
+        return diagnoseDTOS;
     }
 
     @Override
     public List<DiagnoseDTO> findAllByAppointments(List<Appointment> appointments) {
         ArrayList<DiagnoseDTO> diagnoses = new ArrayList<>();
-        appointments
-                .stream()
-                .map((appointment) ->
+        appointments.forEach((appointment) ->
                         diagnoses.add(
                             convertToDiagnoseDTO(this.diagnosisRepository.findByAppointments(appointment)))
                 );
 
-        return diagnoses.stream().collect(Collectors.toList());
+        return new ArrayList<>(diagnoses);
     }
 
     @Override

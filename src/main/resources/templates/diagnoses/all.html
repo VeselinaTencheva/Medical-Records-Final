@@ -19,12 +19,14 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Description</th>
+                            <th>Patients Count</th>
                             <th>Edit</th>
                             <th>Delete</th>
                             <tr th:each="d : ${diagnoses}">
                                 <td th:text="${d.id}"></td>
                                 <td th:text="${d.name}"></td>
                                 <td th:text="${d.description}"></td>
+                                <td th:text="${d.patientsCount}"></td>
                                 <td><a class="btn btn-info" th:href="@{'/diagnosis/update/'+${d.id}}">Edit</a></td>
                                 <td><a class="btn btn-danger" th:href="@{'/diagnosis/delete/'+${d.id}}">Delete</a></td>
                             </tr>

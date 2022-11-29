@@ -10,5 +10,4 @@ import java.util.List;
 
 public interface DiagnosisRepository extends JpaRepository<Diagnosis, Long> {
     Diagnosis findByAppointments(Appointment appointment);
-
 }
