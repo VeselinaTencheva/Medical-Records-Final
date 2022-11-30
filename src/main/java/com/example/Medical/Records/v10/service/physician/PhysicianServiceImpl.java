@@ -1,15 +1,14 @@
 package com.example.Medical.Records.v10.service.physician;
 
-import com.example.Medical.Records.v10.data.entity.SickLeave;
 import com.example.Medical.Records.v10.data.entity.physicians.GeneralPractitioner;
 import com.example.Medical.Records.v10.data.entity.physicians.Physician;
 import com.example.Medical.Records.v10.data.repository.GeneralPractitionerRepository;
+import com.example.Medical.Records.v10.data.repository.PatientRepository;
 import com.example.Medical.Records.v10.data.repository.PhysicianRepository;
 import com.example.Medical.Records.v10.dto.physician.CreateGeneralPractitionerDTO;
 import com.example.Medical.Records.v10.dto.physician.CreatePhysicianDTO;
 import com.example.Medical.Records.v10.dto.physician.PhysicianDTO;
 import com.example.Medical.Records.v10.dto.physician.UpdatePhysicianDTO;
-import com.example.Medical.Records.v10.dto.sickLeave.SickLeaveDTO;
 import com.example.Medical.Records.v10.service.generalPractitioner.GeneralPractitionerService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -24,6 +23,8 @@ public class PhysicianServiceImpl implements PhysicianService {
     private final ModelMapper modelMapper;
     private final PhysicianRepository physicianRepository;
 
+    private final PatientRepository patientRepository;
+
     private final GeneralPractitionerRepository generalPractitionerRepository;
     private final GeneralPractitionerService generalPractitionerService;
 
@@ -32,27 +33,40 @@ public class PhysicianServiceImpl implements PhysicianService {
         return physicianRepository
                 .findAll()
                 .stream()
-                .map(this::convertToPhysicianDTO)
+                .map(physician -> {
+                    PhysicianDTO physicianDTO = convertToPhysicianDTO(physician);
+                    boolean isGp = true;
+                    int patientsCount = 0;
+                    try {
+                        GeneralPractitioner generalPractitioner = this.generalPractitionerService.findById(physicianDTO.getId());
+                        patientsCount = patientRepository.findDistinctByGeneralPractitioner(generalPractitioner).size();
+                    } catch (IllegalArgumentException e) {
+                        isGp = false;
+                    }
+                    physicianDTO.setGP(isGp);
+                    physicianDTO.setPatientsCount(patientsCount);
+                    return physicianDTO;
+                })
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Physician findById(Long id) {
-        return this.physicianRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid Physician ID: " + id));
+    public PhysicianDTO findById(Long id) {
+        return convertToPhysicianDTO(this.physicianRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid Physician ID: " + id)));
     }
 
     @Override
-    public Physician create(CreatePhysicianDTO createPhysicianDTO) {
+    public PhysicianDTO create(CreatePhysicianDTO createPhysicianDTO) {
         if (!createPhysicianDTO.getPracticeCode().equals("")) {
-            return generalPractitionerService.create(modelMapper.map(createPhysicianDTO, CreateGeneralPractitionerDTO.class));
+            return convertToPhysicianDTO(generalPractitionerService.create(modelMapper.map(createPhysicianDTO, CreateGeneralPractitionerDTO.class)));
         } else {
-            return this.physicianRepository.saveAndFlush(this.modelMapper.map(createPhysicianDTO, Physician.class));
+            return convertToPhysicianDTO(this.physicianRepository.saveAndFlush(this.modelMapper.map(createPhysicianDTO, Physician.class)));
         }
     }
 
     @Override
-    public Physician update(Long id, UpdatePhysicianDTO physician) {
+    public PhysicianDTO update(Long id, UpdatePhysicianDTO physician) {
         GeneralPractitioner prevGP;
         try {
             prevGP = generalPractitionerService.findById(id);
@@ -63,15 +77,20 @@ public class PhysicianServiceImpl implements PhysicianService {
         physician.setId(id);
 
         if (prevGP == null && physician.getPracticeCode().isEmpty() && physician.getPracticeCode().isBlank()) {
-            return this.physicianRepository.save(modelMapper.map(physician, Physician.class));
+            return convertToPhysicianDTO(this.physicianRepository.save(modelMapper.map(physician, Physician.class)));
         } else if (prevGP == null && (!physician.getPracticeCode().isBlank())) {
             physicianRepository.delete(modelMapper.map(physician, Physician.class));
-            return generalPractitionerRepository.save(modelMapper.map(physician, GeneralPractitioner.class));
+            return convertToPhysicianDTO(
+                    generalPractitionerRepository
+                            .save(modelMapper.map(physician, GeneralPractitioner.class))
+            );
         } else if (prevGP != null && physician.getPracticeCode().isBlank()) {
             generalPractitionerRepository.deleteById(id);
-            return physicianRepository.save(modelMapper.map(physician, Physician.class));
+            return convertToPhysicianDTO(physicianRepository.save(modelMapper.map(physician, Physician.class)));
         } else {
-            return generalPractitionerRepository.save(modelMapper.map(physician, GeneralPractitioner.class));
+            return convertToPhysicianDTO(
+                    generalPractitionerRepository.save(modelMapper.map(physician, GeneralPractitioner.class))
+            );
         }
     }
 
@@ -81,14 +100,6 @@ public class PhysicianServiceImpl implements PhysicianService {
     }
 
     private PhysicianDTO convertToPhysicianDTO(Physician physician) {
-        PhysicianDTO physicianDTO = modelMapper.map(physician, PhysicianDTO.class);
-        Boolean isGp = true;
-        try {
-            this.generalPractitionerService.findById(physicianDTO.getId()).getId();
-        } catch (IllegalArgumentException e) {
-            isGp = false;
-        }
-        physicianDTO.setGP(isGp);
-        return physicianDTO;
+        return modelMapper.map(physician, PhysicianDTO.class);
     }
 }

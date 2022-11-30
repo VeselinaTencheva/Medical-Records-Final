@@ -10,11 +10,11 @@ import java.util.List;
 public interface PhysicianService {
     List<PhysicianDTO> findAll();
 
-    Physician findById(Long id);
+    PhysicianDTO findById(Long id);
 
-    Physician create(CreatePhysicianDTO physician);
+    PhysicianDTO create(CreatePhysicianDTO physician);
 
-    Physician update(Long id, UpdatePhysicianDTO physician);
+    PhysicianDTO update(Long id, UpdatePhysicianDTO physician);
 
     void delete(Long id);
 }

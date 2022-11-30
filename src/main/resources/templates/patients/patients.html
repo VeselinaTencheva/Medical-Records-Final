@@ -29,8 +29,11 @@
                             <td th:text="${patient.name}"></td>
                             <td th:text="${patient.ssn}"></td>
                             <td th:text="${patient.hasInsurance}"></td>
-                            <td th:text="${patient.generalPractitioner?.name}"></td>
-                            <td><a class="btn btn-link" th:href="@{'/patients/'+${patient.id} + '/diagnoses'}">Diagnoses</a></td>
+                            <td><a
+                                    th:if="${patient?.generalPractitioner?.getId() != null}"
+                                    th:href="@{'/physicians/'+${patient.generalPractitioner.id}}"
+                                    th:text="${patient.generalPractitioner.name}" /></td>
+                            <td><a th:href="@{'/patients/'+${patient.id} + '/diagnoses'}">Diagnoses</a></td>
                             <td><a class="btn btn-info" th:href="@{'/patients/edit-patient/'+${patient.id}}">Edit</a></td>
                             <td><a class="btn btn-danger" th:href="@{'/patients/delete/'+${patient.id}}">Delete</a></td>
                         </tr>

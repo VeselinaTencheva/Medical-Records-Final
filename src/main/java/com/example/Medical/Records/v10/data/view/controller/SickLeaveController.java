@@ -1,5 +1,6 @@
 package com.example.Medical.Records.v10.data.view.controller;
 
+import com.example.Medical.Records.v10.data.view.model.appointments.UpdateAppointmentAndSickLeaveAndTreatmentViewModel;
 import com.example.Medical.Records.v10.data.view.model.sickLeaves.CreateSickLeaveViewModel;
 import com.example.Medical.Records.v10.data.view.model.sickLeaves.SickLeaveViewModel;
 import com.example.Medical.Records.v10.data.view.model.sickLeaves.UpdateSickLeaveViewModel;
@@ -9,13 +10,16 @@ import com.example.Medical.Records.v10.dto.sickLeave.UpdateSickLeaveDTO;
 import com.example.Medical.Records.v10.service.sickLeave.SickLeaveService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.awt.print.Pageable;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -33,6 +37,12 @@ public class SickLeaveController {
                 .collect(Collectors.toList());
         model.addAttribute("sickLeaves", sickLeaves);
         return "sick-leaves/all";
+    }
+
+    @GetMapping("/{id}")
+    public String getSickLeaveById(Model model, @PathVariable Long id) {
+        model.addAttribute("sickLeave", modelMapper.map(sickLeaveService.findById(id), UpdateSickLeaveViewModel.class));
+        return "/sick-leaves/view";
     }
 
     @GetMapping("/create")

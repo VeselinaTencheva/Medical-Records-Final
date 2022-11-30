@@ -1,9 +1,7 @@
 package com.example.Medical.Records.v10.service.treatment;
 
-import com.example.Medical.Records.v10.data.entity.SickLeave;
 import com.example.Medical.Records.v10.data.entity.Treatment;
 import com.example.Medical.Records.v10.data.repository.TreatmentRepository;
-import com.example.Medical.Records.v10.dto.sickLeave.SickLeaveDTO;
 import com.example.Medical.Records.v10.dto.treatment.CreateTreatmentDTO;
 import com.example.Medical.Records.v10.dto.treatment.TreatmentDTO;
 import com.example.Medical.Records.v10.dto.treatment.UpdateTreatmentDTO;

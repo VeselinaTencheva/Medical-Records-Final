@@ -19,4 +19,5 @@ public class PhysiciansViewModel {
     private String medicalUUID;
     private DepartmentType departmentType;
     private boolean isGP;
+    private int patientsCount;
 }

@@ -1,18 +1,11 @@
 package com.example.Medical.Records.v10.data.view.controller;
 
-import com.example.Medical.Records.v10.data.entity.Appointment;
-import com.example.Medical.Records.v10.data.entity.Diagnosis;
 import com.example.Medical.Records.v10.data.view.model.diagnoses.CreateDiagnoseViewModel;
 import com.example.Medical.Records.v10.data.view.model.diagnoses.DiagnoseViewModel;
 import com.example.Medical.Records.v10.data.view.model.diagnoses.UpdateDiagnoseViewModel;
-import com.example.Medical.Records.v10.data.view.model.patients.CreatePatientViewModel;
-import com.example.Medical.Records.v10.data.view.model.patients.PatientViewModel;
 import com.example.Medical.Records.v10.dto.diagnoses.CreateDiagnoseDTO;
 import com.example.Medical.Records.v10.dto.diagnoses.DiagnoseDTO;
 import com.example.Medical.Records.v10.dto.diagnoses.UpdateDiagnoseDTO;
-import com.example.Medical.Records.v10.dto.patient.CreatePatientDTO;
-import com.example.Medical.Records.v10.dto.patient.PatientDTO;
-import com.example.Medical.Records.v10.service.appointment.AppointmentService;
 import com.example.Medical.Records.v10.service.diagnosis.DiagnosisService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -48,6 +41,12 @@ public class DiagnosisController {
         return "/diagnoses/create";
     }
 
+    @GetMapping("/{id}")
+    public String getDiagnoseById(Model model, @PathVariable Long id) {
+        model.addAttribute("diagnose", modelMapper.map(diagnosisService.findById(id), UpdateDiagnoseViewModel.class));
+        return "diagnoses/view";
+    }
+
     @PostMapping("/create")
     public String createDiagnosis(@Valid @ModelAttribute("diagnosis") CreateDiagnoseViewModel diagnosis, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -59,7 +58,7 @@ public class DiagnosisController {
 
     @GetMapping("/update/{id}")
     public String editDiagnosis(Model model, @PathVariable Long id) {
-        model.addAttribute("diagnosis", diagnosisService.findById(id));
+        model.addAttribute("diagnosis", modelMapper.map(diagnosisService.findById(id), UpdateDiagnoseViewModel.class));
         return "/diagnoses/edit";
     }
 

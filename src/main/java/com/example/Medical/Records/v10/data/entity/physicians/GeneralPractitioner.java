@@ -11,8 +11,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -25,16 +23,11 @@ import java.util.Set;
 public class GeneralPractitioner extends Physician {
 
     @Column(name = "practice_code", nullable = false, unique = true)
-//    @NotNull(message = "Practice Code is mandatory")
     @Size(min = 5, max = 5, message="Exact 5")
     private String practiceCode;
 
     @Column(name = "practice_address", nullable = false)
-//    @NotBlank(message = "Practice Address is mandatory")
     private String practiceAddress;
-
-//    @OneToMany(fetch = FetchType.EAGER)
-//    private Set<Patient> patients;
 
     @OneToMany(mappedBy = "generalPractitioner")
     @JsonIgnoreProperties("generalPractitioner")

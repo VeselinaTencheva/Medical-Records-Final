@@ -16,4 +16,5 @@ public class PhysicianDTO {
     private String medicalUUID;
     private DepartmentType departmentType;
     private boolean isGP;
+    private int patientsCount;
 }

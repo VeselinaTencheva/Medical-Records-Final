@@ -3,14 +3,12 @@ package com.example.Medical.Records.v10.service.sickLeave;
 import com.example.Medical.Records.v10.data.entity.Appointment;
 import com.example.Medical.Records.v10.data.entity.SickLeave;
 import com.example.Medical.Records.v10.data.repository.SickLeaveRepository;
-import com.example.Medical.Records.v10.dto.appointment.AppointmentDTO;
 import com.example.Medical.Records.v10.dto.sickLeave.CreateSickLeaveDTO;
 import com.example.Medical.Records.v10.dto.sickLeave.SickLeaveDTO;
 import com.example.Medical.Records.v10.dto.sickLeave.UpdateSickLeaveDTO;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +22,14 @@ public class SickLeaveServiceImpl implements SickLeaveService {
     @Override
     public List<SickLeaveDTO> findAll() {
         return sickLeaveRepository.findAll().stream()
-                .map(this::convertToSickLeaveDTO)
+                .map(sickLeave -> {
+                    Appointment appointment = sickLeave.getAppointment();
+                    final SickLeaveDTO sickLeaveDTO = convertToSickLeaveDTO(sickLeave);
+                    sickLeaveDTO.setAppointment(appointment);
+                    sickLeaveDTO.setPatient(appointment.getPatient());
+                    sickLeaveDTO.setPhysician(appointment.getPhysician());
+                    return sickLeaveDTO;
+                })
                 .collect(Collectors.toList());
     }
 

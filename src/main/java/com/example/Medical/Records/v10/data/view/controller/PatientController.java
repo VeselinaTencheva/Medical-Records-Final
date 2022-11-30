@@ -43,6 +43,14 @@ public class PatientController {
         return "patients/patients";
     }
 
+    @GetMapping("/{id}")
+    public String getPatientById(Model model,  @PathVariable Long id) {
+        PatientViewModel patient = convertToPatientViewModel(patientService.findById(id));
+        model.addAttribute("patient", patient);
+
+        return "patients/view-patient";
+    }
+
     @GetMapping("/{id}/diagnoses")
     public String getPatientsDiagnoses(Model model,  @PathVariable Long id) {
         final List<DiagnoseViewModel> diagnoses =

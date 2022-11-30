@@ -21,24 +21,29 @@
                             <th>Diagnosis</th>
                             <th>Patient</th>
                             <th>Physician</th>
-                            <th>Sick Leave</th>
+                            <th>Sick Leave Start Date</th>
                             <th>Treatment</th>
                             <th>Edit</th>
                             <th>Delete</th>
                             <tr th:each="app : ${appointments}">
                                 <td th:text="${app.id}"></td>
                                 <td th:text="${app.date}"></td>
-                                <td th:text="${app.diagnosis?.getName()}"></td>
-                                <td th:text="${app.patient.getName()}"></td>
-                                <td th:text="${app.physician.getName()}"></td>
-<!--                                <td th:text="${app.sickLeave?.getDuration()}"></td>-->
+                                <td><a th:href="@{'/diagnosis/'+${app.diagnosis.id}}" th:text="${app.diagnosis.name}" /></td>
+                                <td><a th:href="@{'/patients/'+${app.patient.id}}" th:text="${app.patient.name}" /></td>
+                                <td><a th:href="@{'/physicians/'+${app.physician.id}}" th:text="${app.physician.name}" /></td>
                                 <td>
-                                    <a th:if="${app?.sickLeave?.getId() != null}" th:href="@{'/sick-leaves/update/'+${app?.sickLeave?.getId()}}">View Sick Leave</a>
+                                    <a
+                                            th:if="${app?.sickLeave?.getId() != null}"
+                                            th:href="@{'/sick-leaves/'+${app?.sickLeave?.getId()}}"
+                                            th:text="${app.sickLeave.startDate}">
+                                    </a>
                                 </td>
                                 <td>
-                                    <a th:if="${app?.treatment?.getId() != null}" th:href="@{'/treatments/update/'+${app?.getTreatment()?.getId()}}">View Treatment</a>
+                                    <a
+                                            th:if="${app?.treatment?.getId() != null}"
+                                            th:href="@{'/treatments/'+${app?.getTreatment()?.getId()}}"
+                                            th:text="${app.getTreatment().getName()}"></a>
                                 </td>
-<!--                                <td th:text="${app.treatment?.getName()}"></td>-->
                                 <td><a class="btn btn-info" th:href="@{'/appointments/update/'+${app.id}}">Edit</a></td>
                                 <td><a class="btn btn-danger" th:href="@{'/appointments/delete/'+${app.id}}">Delete</a></td>
                             </tr>

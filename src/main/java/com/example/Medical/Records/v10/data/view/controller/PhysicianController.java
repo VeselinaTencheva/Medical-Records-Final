@@ -2,6 +2,7 @@ package com.example.Medical.Records.v10.data.view.controller;
 
 import com.example.Medical.Records.v10.data.entity.DepartmentType;
 import com.example.Medical.Records.v10.data.entity.physicians.Physician;
+import com.example.Medical.Records.v10.data.view.model.patients.PatientViewModel;
 import com.example.Medical.Records.v10.data.view.model.physicians.CreatePhysicianAndGPViewModel;
 import com.example.Medical.Records.v10.data.view.model.physicians.PhysiciansViewModel;
 import com.example.Medical.Records.v10.data.view.model.physicians.UpdatePhysicianAndGPViewModel;
@@ -39,6 +40,18 @@ public class PhysicianController {
                 .collect(Collectors.toList());
         model.addAttribute("physicians", physicians);
         return "physicians/all";
+    }
+
+    @GetMapping("/{id}")
+    public String getPhysicianById(Model model, @PathVariable Long id) {
+        PhysiciansViewModel physician = convertToPhysiciansViewModel(physicianService.findById(id));
+        if (physician.isGP()) {
+            model.addAttribute("physician", modelMapper.map(generalPractitionerService.findById(id), UpdatePhysicianAndGPViewModel.class));
+        } else {
+            model.addAttribute("physician", modelMapper.map(physicianService.findById(id), UpdatePhysicianAndGPViewModel.class));
+        }
+        model.addAttribute("departments", DepartmentType.values());
+        return "physicians/view";
     }
 
     @GetMapping("/create")

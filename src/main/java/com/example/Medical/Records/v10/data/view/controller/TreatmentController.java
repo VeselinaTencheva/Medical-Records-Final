@@ -2,6 +2,7 @@ package com.example.Medical.Records.v10.data.view.controller;
 
 import com.example.Medical.Records.v10.data.entity.Treatment;
 import com.example.Medical.Records.v10.data.view.model.sickLeaves.SickLeaveViewModel;
+import com.example.Medical.Records.v10.data.view.model.sickLeaves.UpdateSickLeaveViewModel;
 import com.example.Medical.Records.v10.data.view.model.treatments.CreateTreatmentViewModel;
 import com.example.Medical.Records.v10.data.view.model.treatments.TreatmentViewModel;
 import com.example.Medical.Records.v10.data.view.model.treatments.UpdateTreatmentViewModel;
@@ -37,6 +38,12 @@ public class TreatmentController {
                 .collect(Collectors.toList());
         model.addAttribute("treatments", treatments);
         return "treatments/all";
+    }
+
+    @GetMapping("/{id}")
+    public String getTreatmentById(Model model, @PathVariable Long id) {
+        model.addAttribute("treatment", modelMapper.map(treatmentService.findById(id), UpdateTreatmentViewModel.class));
+        return "/treatments/view";
     }
 
     @GetMapping("/create")

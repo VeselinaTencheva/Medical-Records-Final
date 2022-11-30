@@ -1,9 +1,5 @@
 package com.example.Medical.Records.v10.config;
 
-import com.example.Medical.Records.v10.data.entity.DepartmentType;
-import com.example.Medical.Records.v10.data.entity.Patient;
-import com.example.Medical.Records.v10.data.entity.physicians.GeneralPractitioner;
-import com.example.Medical.Records.v10.data.entity.physicians.Physician;
 import com.example.Medical.Records.v10.data.repository.GeneralPractitionerRepository;
 import com.example.Medical.Records.v10.data.repository.PatientRepository;
 import com.example.Medical.Records.v10.data.repository.PhysicianRepository;
@@ -11,12 +7,7 @@ import com.example.Medical.Records.v10.data.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import java.util.Arrays;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
