@@ -1,6 +1,7 @@
-body{
+body {
     font-family: 'AvenirNextLTPro-Regular', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
     background: whitesmoke ;
+    height: 100vh;
     /*top: 0;*/
     /*right: 0;*/
     /*bottom: 0;*/
@@ -43,7 +44,7 @@ main {
     /*display: flex;*/
     /*flex-direction: column;*/
     /*width: 300px;*/
-    background-color: #8ba38c !important;
+    background-color: #0c5460 !important;
     opacity: 85%;
     /*overflow-x: hidden; !* Disable horizontal scroll *!*/
 }
@@ -94,8 +95,13 @@ main {
     cursor: pointer;
 }
 
+a {
+    color: #ffc107;
+}
+
 a:hover{
-    color: #eca1a6;
+    color: #ffc107;
+    opacity: 75%;
 }
 
 .underline{

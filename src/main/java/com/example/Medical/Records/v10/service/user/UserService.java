@@ -1,12 +1,13 @@
 package com.example.Medical.Records.v10.service.user;
 
 import com.example.Medical.Records.v10.data.entity.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
 
-public interface UserService // extends UserDetailsService //
+public interface UserService extends UserDetailsService // extends UserDetailsService //
 {
 //    User findUserByUserName(String name);
 //

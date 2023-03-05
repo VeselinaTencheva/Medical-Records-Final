@@ -1,19 +1,35 @@
 package com.example.Medical.Records.v10.config;
 
-import com.example.Medical.Records.v10.data.repository.GeneralPractitionerRepository;
-import com.example.Medical.Records.v10.data.repository.PatientRepository;
-import com.example.Medical.Records.v10.data.repository.PhysicianRepository;
-import com.example.Medical.Records.v10.data.repository.UserRepository;
+import com.example.Medical.Records.v10.data.entity.Privilege;
+import com.example.Medical.Records.v10.data.entity.Role;
+import com.example.Medical.Records.v10.data.entity.User;
+import com.example.Medical.Records.v10.data.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
 public class DbInit implements CommandLineRunner {
 
+
+    @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private PrivilegeRepository privilegeRepository;
+
     @Autowired
     private PatientRepository patientRepository;
 
@@ -23,14 +39,93 @@ public class DbInit implements CommandLineRunner {
     @Autowired
     private PhysicianRepository physicianRepository;
 
-//    @Autowired
-//    private PasswordEncoder encoder;
+    @Autowired
+    private PasswordEncoder encoder;
 
     public DbInit() {
     }
 
     @Override
     public void run(String... args) throws Exception {
+//        if(userRepository.findAll().size() > 0){
+//            this.userRepository.deleteAll();
+//        }
+//        if(roleRepository.findAll().size() > 0)
+//            this.roleRepository.deleteAll();
+//        if(privilegeRepository.findAll().size() > 0)
+//            this.privilegeRepository.deleteAll();
+//
+//        Privilege readPatient
+//                = createPrivilegeIfNotFound("READ_PATIENT");
+//        Privilege readPhysician
+//                = createPrivilegeIfNotFound("READ_PHYSICIAN");
+//        Privilege readGeneralPractitioner
+//                = createPrivilegeIfNotFound("READ_GENERAL_PRACTITIONER");
+//        Privilege writePatient
+//                = createPrivilegeIfNotFound("WRITE_PATIENT)");
+//        Privilege writePhysician
+//                = createPrivilegeIfNotFound("WRITE_PHYSICIAN");
+//        Privilege writeGeneralPractitioner
+//                = createPrivilegeIfNotFound("WRITE_GENERAL_PRACTITIONER");
+//        Privilege readDiagnosis
+//                = createPrivilegeIfNotFound("READ_DIAGNOSIS");
+//        Privilege writeDiagnosis
+//                = createPrivilegeIfNotFound("WRITE_DIAGNOSIS");
+//        Privilege readSickLeave
+//                = createPrivilegeIfNotFound("READ_SICK_LEAVE");
+//        Privilege writeSickLeave
+//                = createPrivilegeIfNotFound("WRITE_SICK_LEAVE");
+//        Privilege readVisitation
+//                = createPrivilegeIfNotFound("READ_VISITATION");
+//        Privilege writeVisitation
+//                = createPrivilegeIfNotFound("WRITE_VISITATION");
+//
+//
+//        Set<Privilege> adminPrivileges = Arrays.asList(
+//               readPatient, readDiagnosis, readGeneralPractitioner, readPhysician,
+//                readVisitation, readSickLeave, writePatient, writeDiagnosis,
+//                writeGeneralPractitioner, writePhysician, writeVisitation, writeSickLeave
+//        ).stream().collect(Collectors.toSet());
+//
+//        Set<Privilege> patientPrivileges = Arrays.asList(
+//                readPatient, readGeneralPractitioner, readPhysician, writePatient,
+//                readDiagnosis, readSickLeave, readVisitation
+//        ).stream().collect(Collectors.toSet());
+//
+//        Set<Privilege> physicianPrivileges = Arrays.asList(
+//                readPatient, readDiagnosis, readGeneralPractitioner, readPhysician,
+//                readVisitation, readSickLeave, writePhysician,
+//                writeDiagnosis, writeVisitation, writeSickLeave
+//        ).stream().collect(Collectors.toSet());
+//
+//        Set<Privilege> generalPractitionerPrivileges = Arrays.asList(
+//                readPatient, readDiagnosis, readGeneralPractitioner, readPhysician,
+//                readVisitation, readSickLeave, writeGeneralPractitioner,
+//                writeDiagnosis, writeVisitation, writeSickLeave
+//        ).stream().collect(Collectors.toSet());
+////
+//////       TODO create GP role and privileges
+////
+//        createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
+//        createRoleIfNotFound("ROLE_PATIENT", patientPrivileges);
+//        createRoleIfNotFound("ROLE_PHYSICIAN", physicianPrivileges);
+//        createRoleIfNotFound("ROLE_GENERAL_PRACTITIONER", generalPractitionerPrivileges);
+
+//
+//                Role adminRole = roleRepository.findByAuthority("ROLE_ADMIN");
+//        User user = new User();
+//
+////        user.setId(UUID.randomUUID());
+//        user.setName("Veselina");
+//        user.setPassword(encoder.encode("vesi"));
+//        user.setUsername("veselina");
+//        user.setRoles(Arrays.asList(adminRole).stream().collect(Collectors.toSet()));
+//        user.setEnabled(true);
+//        user.setAccountNonExpired(true);
+//        user.setAccountNonLocked(true);
+//        user.setCredentialsNonExpired(true);
+//        userRepository.save(user);
+
 
 //        Physician physician = new Physician();
 //        physician.setName("phys 1");
@@ -88,26 +183,55 @@ public class DbInit implements CommandLineRunner {
 //
 //        patientRepository.save(p2);
 //        this.userRepository.deleteAll();
+//        Role adminRole = roleRepository.findByAuthority("ROLE_ADMIN");
 //        User user = new User();
-//        user.setUsername("user");
-//        user.setPassword(encoder.encode("user_123"));
+//        user.setName("user2");
+//        user.setUsername("user2");
+//        user.setPassword(encoder.encode("user"));
+//        user.setRoles(Arrays.asList(adminRole).stream().collect(Collectors.toSet()));
 //        user.setAccountNonExpired(true);
 //        user.setAccountNonLocked(true);
 //        user.setEnabled(true);
 //        user.setCredentialsNonExpired(true);
 //
 //        User user2 = new User();
+//        user2.setName("teatcher");
 //        user2.setUsername("teacher");
-//        user2.setPassword(encoder.encode("teacher_123"));
+//        user2.setPassword(encoder.encode("teacher"));
 //        user2.setAccountNonExpired(true);
 //        user2.setAccountNonLocked(true);
 //        user2.setEnabled(true);
 //        user2.setCredentialsNonExpired(true);
-//
+////
 //        List<User> users = Arrays.asList(user, user2);
 //
 //        // Save to db
 //        this.userRepository.saveAll(users);
+    }
+    @Transactional
+    Privilege createPrivilegeIfNotFound(String name) {
+//        Privilege privilege = privilegeRepo.findByName(name);
+//        if (privilege == null) {
+        Privilege privilege = new Privilege();
+//            privilege.setId(UUID.randomUUID());
+        privilege.setName(name);
+        privilegeRepository.save(privilege);
+//        }
+        return privilege;
+    }
+
+    @Transactional
+    Role createRoleIfNotFound(
+            String name, Set<Privilege> privileges) {
+//        Role role = roleRepo.findByAuthority(name);
+//        if (role == null) {
+        Role role = new Role();
+//            role.setId(UUID.randomUUID());
+        role.setAuthority(name);
+        role.setPrivileges(privileges);
+        roleRepository.save(role);
+//        }
+        return role;
     }
 
 

@@ -1,6 +1,7 @@
 package com.example.Medical.Records.v10.data.view.model.physicians;
 
 import com.example.Medical.Records.v10.data.entity.DepartmentType;
+import com.example.Medical.Records.v10.data.view.model.users.CreateUserViewModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,11 +13,7 @@ import javax.validation.constraints.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreatePhysicianAndGPViewModel {
-
-    @NotBlank(message = "Name is mandatory")
-    @Size(min = 5, max=30, message = "Name must be between 5 and 30 characters")
-    private String name;
+public class CreatePhysicianAndGPViewModel extends CreateUserViewModel {
 
     @NotBlank(message = "Medical UUID is mandatory")
     @Digits(integer = 10, fraction = 0,  message = "Medical UUID must contains only digits")
