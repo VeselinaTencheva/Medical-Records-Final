@@ -1,8 +1,6 @@
 package com.example.Medical.Records.v10.config;
 
-import com.example.Medical.Records.v10.data.entity.Privilege;
-import com.example.Medical.Records.v10.data.entity.Role;
-import com.example.Medical.Records.v10.data.entity.User;
+import com.example.Medical.Records.v10.data.entity.*;
 import com.example.Medical.Records.v10.data.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,9 @@ public class DbInit implements CommandLineRunner {
     private UserRepository userRepository;
 
     @Autowired
+    private DepartmentRepository departmentRepository;
+
+    @Autowired
     private RoleRepository roleRepository;
 
     @Autowired
@@ -33,8 +34,8 @@ public class DbInit implements CommandLineRunner {
     @Autowired
     private PatientRepository patientRepository;
 
-    @Autowired
-    private GeneralPractitionerRepository generalPractitionerRepository;
+//    @Autowired
+//    private GeneralPractitionerRepository generalPractitionerRepository;
 
     @Autowired
     private PhysicianRepository physicianRepository;
@@ -207,6 +208,11 @@ public class DbInit implements CommandLineRunner {
 //
 //        // Save to db
 //        this.userRepository.saveAll(users);
+
+         // Save departments to db
+        this.createDepartments();
+
+
     }
     @Transactional
     Privilege createPrivilegeIfNotFound(String name) {
@@ -232,6 +238,19 @@ public class DbInit implements CommandLineRunner {
         roleRepository.save(role);
 //        }
         return role;
+    }
+
+    @Transactional
+    void createDepartments(){
+        DepartmentType[] departments = DepartmentType.values();
+        System.out.println(departments.length);
+        for (DepartmentType departmentType : departments) {
+            Department department = new Department();
+//            TODO check why departments are 22 instead of 11
+            department.setDepartmentType(departmentType);
+            department.setName(departmentType.toString().toLowerCase());
+            departmentRepository.save(department);
+        }
     }
 
 

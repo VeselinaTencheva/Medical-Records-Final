@@ -1,5 +1,6 @@
 package com.example.Medical.Records.v10.data.entity.physicians;
 
+import com.example.Medical.Records.v10.data.entity.Department;
 import com.example.Medical.Records.v10.data.entity.DepartmentType;
 import com.example.Medical.Records.v10.data.entity.User;
 import com.example.Medical.Records.v10.data.entity.Appointment;
@@ -17,7 +18,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Physician extends User {
 //TODO think about this to become an abstract class
     @Column(name = "medical_uuid", nullable = false, unique = true)
@@ -25,8 +25,8 @@ public class Physician extends User {
     @Size(min = 6, max = 6, message="\"Medical UUID must be exact 6")
     private String medicalUUID;
 
-    @Enumerated
-    private DepartmentType departmentType;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Department> departments;
 
     @OneToMany(mappedBy = "physician")
     @JsonIgnoreProperties("physician")

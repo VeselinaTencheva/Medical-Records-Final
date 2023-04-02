@@ -1,7 +1,6 @@
 package com.example.Medical.Records.v10.dto.patient;
 
-import com.example.Medical.Records.v10.data.entity.physicians.GeneralPractitioner;
-import com.sun.xml.bind.v2.TODO;
+import com.example.Medical.Records.v10.data.entity.physicians.Physician;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,5 +17,5 @@ public class UpdatePatientDTO {
 
     private boolean hasInsurance;
 
-    private GeneralPractitioner generalPractitioner;
+    private Physician physician;
 }

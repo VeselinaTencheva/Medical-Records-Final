@@ -1,4 +1,4 @@
-package com.example.Medical.Records.v10.controller.api;
+package com.example.Medical.Records.v10.dto.api;
 
 import com.example.Medical.Records.v10.data.entity.SickLeave;
 import com.example.Medical.Records.v10.data.view.model.sickLeaves.SickLeaveViewModel;

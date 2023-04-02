@@ -1,8 +1,9 @@
-body {
+html, body {
     font-family: 'AvenirNextLTPro-Regular', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
     background: whitesmoke ;
-    height: 100vh;
-    /*top: 0;*/
+    margin: 0;
+    padding: 0;
+    height: 100%;
     /*right: 0;*/
     /*bottom: 0;*/
     /*left: 0;*/
@@ -34,7 +35,6 @@ main {
     padding: 30px;
 }
 
-
 .sidenav {
     /*height: 100%; !* Full-height: remove this if you want "auto" height *!*/
     /*position: fixed; !* Fixed Sidebar (stay in place on scroll) *!*/
@@ -47,6 +47,11 @@ main {
     background-color: #0c5460 !important;
     opacity: 85%;
     /*overflow-x: hidden; !* Disable horizontal scroll *!*/
+}
+
+.register-page {
+    color: whitesmoke;
+    background-color: #0c5460;
 }
 
 .main-container {
@@ -95,6 +100,14 @@ main {
     cursor: pointer;
 }
 
+.forgot-password:hover{
+    color: #ffc107;
+}
+
+.fs-16 {
+    font-size: 16px;
+}
+
 a {
     color: #ffc107;
 }
@@ -110,4 +123,8 @@ a:hover{
 
 .outline-none {
     outline: none;
+}
+
+#showGPForm, #showMSForm {
+    display: none;
 }

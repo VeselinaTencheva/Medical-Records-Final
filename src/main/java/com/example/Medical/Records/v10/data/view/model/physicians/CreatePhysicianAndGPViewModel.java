@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -20,16 +21,16 @@ public class CreatePhysicianAndGPViewModel extends CreateUserViewModel {
     @Size(min = 6, max = 6, message = "Medical UUID must be exact 6 integers")
     private String medicalUUID;
 
-    private DepartmentType departmentType;
+    private Set<DepartmentType> departmentType;
 
 //    TODO add validation for size 5 but only when the field is not  null
 //    @NotNull(message = "Practice Code is mandatory")
-    @Size(min = 5, max = 5, message="Practise code must be exact 5 integers")
+//    @Size(min = 5, max = 5, message="Practise code must be exact 5 integers")
 //    @Pattern(regexp="/^(\\s*|\\d+)$/", message = "only digits")
     private String practiceCode;
 
     //    @NotBlank(message = "Practice Address is mandatory")
-    @Size(min = 5, message="Practise address must be at least 5 symbols")
+//    @Size(min = 5, message="Practise address must be at least 5 symbols")
     //    TODO add validation for size 5 but only when the field is not  null
     private String practiceAddress;
 

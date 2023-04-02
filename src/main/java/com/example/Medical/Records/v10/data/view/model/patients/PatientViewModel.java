@@ -1,6 +1,6 @@
 package com.example.Medical.Records.v10.data.view.model.patients;
 
-import com.example.Medical.Records.v10.data.entity.physicians.GeneralPractitioner;
+import com.example.Medical.Records.v10.data.entity.physicians.Physician;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,5 +16,5 @@ public class PatientViewModel {
     private String name;
     private String ssn;
     private boolean hasInsurance;
-    private GeneralPractitioner generalPractitioner;
+    private Physician physician;
 }

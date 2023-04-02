@@ -9,7 +9,6 @@ import com.example.Medical.Records.v10.data.view.model.physicians.UpdatePhysicia
 import com.example.Medical.Records.v10.dto.physician.CreatePhysicianDTO;
 import com.example.Medical.Records.v10.dto.physician.PhysicianDTO;
 import com.example.Medical.Records.v10.dto.physician.UpdatePhysicianDTO;
-import com.example.Medical.Records.v10.service.generalPractitioner.GeneralPractitionerService;
 import com.example.Medical.Records.v10.service.physician.PhysicianService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -29,7 +28,6 @@ import java.util.stream.Collectors;
 public class PhysicianController {
     private PhysicianService physicianService;
 
-    private GeneralPractitionerService generalPractitionerService;
     private ModelMapper modelMapper;
 
     @GetMapping
@@ -45,46 +43,49 @@ public class PhysicianController {
     @GetMapping("/{id}")
     public String getPhysicianById(Model model, @PathVariable Long id) {
         PhysiciansViewModel physician = convertToPhysiciansViewModel(physicianService.findById(id));
-        if (physician.isGP()) {
-            model.addAttribute("physician", modelMapper.map(generalPractitionerService.findById(id), UpdatePhysicianAndGPViewModel.class));
-        } else {
+//        if (physician.isGP()) {
+//            model.addAttribute("physician", modelMapper.map(generalPractitionerService.findById(id), UpdatePhysicianAndGPViewModel.class));
+//        } else {
             model.addAttribute("physician", modelMapper.map(physicianService.findById(id), UpdatePhysicianAndGPViewModel.class));
-        }
+//        }
         model.addAttribute("departments", DepartmentType.values());
         return "physicians/view";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/register")
     public String showCreatePhysicianForm(Model model) {
         model.addAttribute("departments", DepartmentType.values());
+        System.out.println(DepartmentType.values());
         model.addAttribute("physician", new CreatePhysicianAndGPViewModel());
         return "/physicians/create";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/register")
     public String createPhysician(Model model, @Valid @ModelAttribute("physician") CreatePhysicianAndGPViewModel physician, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("departments", DepartmentType.values());
             return "/physicians/create";
         }
-        CreatePhysicianDTO createPhysicianDTO = modelMapper.map(physician, CreatePhysicianDTO.class);
-        physicianService.create(createPhysicianDTO);
+        System.out.println("physician: ");
+        System.out.println(physician);
+//        CreatePhysicianDTO createPhysicianDTO = modelMapper.map(physician, CreatePhysicianDTO.class);
+//        physicianService.create(createPhysicianDTO);
         return "redirect:/physicians";
     }
 
     @GetMapping("/update/{id}")
     public String showEditPhysicianForm(Model model, @PathVariable Long id) {
         boolean isGp = true;
-        try {
-            generalPractitionerService.findById(id);
-        } catch (Exception e) {
-            isGp = false;
-        }
-        if (isGp) {
-            model.addAttribute("physician", modelMapper.map(generalPractitionerService.findById(id), UpdatePhysicianAndGPViewModel.class));
-        } else {
+//        try {
+//            generalPractitionerService.findById(id);
+//        } catch (Exception e) {
+//            isGp = false;
+//        }
+//        if (isGp) {
+//            model.addAttribute("physician", modelMapper.map(generalPractitionerService.findById(id), UpdatePhysicianAndGPViewModel.class));
+//        } else {
             model.addAttribute("physician", modelMapper.map(physicianService.findById(id), UpdatePhysicianAndGPViewModel.class));
-        }
+//        }
         model.addAttribute("departments", DepartmentType.values());
         return "/physicians/edit";
     }

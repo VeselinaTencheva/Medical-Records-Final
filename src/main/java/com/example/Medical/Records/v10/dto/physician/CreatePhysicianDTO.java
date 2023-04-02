@@ -1,20 +1,23 @@
 package com.example.Medical.Records.v10.dto.physician;
 
 import com.example.Medical.Records.v10.data.entity.DepartmentType;
+import com.example.Medical.Records.v10.dto.user.CreateUserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreatePhysicianDTO {
-    private long id;
-    private String name;
+public class CreatePhysicianDTO extends CreateUserDTO {
+//    private long id;
+//    private String name;
     private String medicalUUID;
-    private DepartmentType departmentType;
+    private Set<DepartmentType> departmentType;
     private String practiceCode;
     private String practiceAddress;
 }
