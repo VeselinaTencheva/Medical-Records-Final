@@ -1,4 +1,4 @@
-package com.example.Medical.Records.v10.data.entity;
+package com.example.Medical.Records.v10.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

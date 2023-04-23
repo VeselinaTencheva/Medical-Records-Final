@@ -7,7 +7,7 @@ is also a MS he would have that role, too
 
 TODOs
 
-1. Check why created departments are 22 instead of 11
+1. Check why created departments are 22 instead of 11 -- worked fine now
 2. Check If the connection m to m is correct for physician - department
 3. Fix all places which are commented now about GeneralPracitioner logic
 4. Make Register/Update Physician to work 

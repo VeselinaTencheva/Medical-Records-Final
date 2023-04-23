@@ -1,14 +1,13 @@
 package com.example.Medical.Records.v10.data.view.model.patients;
 
-import com.example.Medical.Records.v10.data.entity.physicians.Physician;
+import com.example.Medical.Records.v10.entity.physicians.Physician;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
-import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor

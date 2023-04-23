@@ -1,10 +1,10 @@
 package com.example.Medical.Records.v10.service.diagnosis;
 
-import com.example.Medical.Records.v10.data.entity.Appointment;
-import com.example.Medical.Records.v10.data.entity.Diagnosis;
-import com.example.Medical.Records.v10.data.repository.AppointmentRepository;
-import com.example.Medical.Records.v10.data.repository.DiagnosisRepository;
-import com.example.Medical.Records.v10.data.repository.PatientRepository;
+import com.example.Medical.Records.v10.entity.Appointment;
+import com.example.Medical.Records.v10.entity.Diagnosis;
+import com.example.Medical.Records.v10.repository.AppointmentRepository;
+import com.example.Medical.Records.v10.repository.DiagnosisRepository;
+import com.example.Medical.Records.v10.repository.PatientRepository;
 import com.example.Medical.Records.v10.dto.diagnoses.CreateDiagnoseDTO;
 import com.example.Medical.Records.v10.dto.diagnoses.DiagnoseDTO;
 import com.example.Medical.Records.v10.dto.diagnoses.UpdateDiagnoseDTO;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor

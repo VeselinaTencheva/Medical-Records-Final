@@ -1,6 +1,6 @@
-package com.example.Medical.Records.v10.data.entity;
+package com.example.Medical.Records.v10.entity;
 
-import com.example.Medical.Records.v10.data.entity.physicians.Physician;
+import com.example.Medical.Records.v10.entity.physicians.Physician;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

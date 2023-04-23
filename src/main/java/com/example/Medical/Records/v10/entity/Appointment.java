@@ -1,6 +1,6 @@
-package com.example.Medical.Records.v10.data.entity;
+package com.example.Medical.Records.v10.entity;
 
-import com.example.Medical.Records.v10.data.entity.physicians.Physician;
+import com.example.Medical.Records.v10.entity.physicians.Physician;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,9 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Setter

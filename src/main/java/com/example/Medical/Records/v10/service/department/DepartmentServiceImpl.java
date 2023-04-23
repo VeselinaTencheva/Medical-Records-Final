@@ -1,20 +1,13 @@
 package com.example.Medical.Records.v10.service.department;
 
-import com.example.Medical.Records.v10.data.entity.Appointment;
-import com.example.Medical.Records.v10.data.entity.Department;
-import com.example.Medical.Records.v10.data.entity.Diagnosis;
-import com.example.Medical.Records.v10.data.repository.AppointmentRepository;
-import com.example.Medical.Records.v10.data.repository.DepartmentRepository;
-import com.example.Medical.Records.v10.data.repository.DiagnosisRepository;
-import com.example.Medical.Records.v10.data.repository.PatientRepository;
-import com.example.Medical.Records.v10.dto.diagnoses.CreateDiagnoseDTO;
+import com.example.Medical.Records.v10.entity.Department;
+import com.example.Medical.Records.v10.entity.Diagnosis;
+import com.example.Medical.Records.v10.repository.DepartmentRepository;
 import com.example.Medical.Records.v10.dto.diagnoses.DiagnoseDTO;
-import com.example.Medical.Records.v10.dto.diagnoses.UpdateDiagnoseDTO;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

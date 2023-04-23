@@ -1,8 +1,8 @@
 package com.example.Medical.Records.v10.service.user;
 
 
-import com.example.Medical.Records.v10.data.entity.User;
-import com.example.Medical.Records.v10.data.repository.UserRepository;
+import com.example.Medical.Records.v10.entity.User;
+import com.example.Medical.Records.v10.repository.UserRepository;
 import lombok.AllArgsConstructor;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.authority.SimpleGrantedAuthority;

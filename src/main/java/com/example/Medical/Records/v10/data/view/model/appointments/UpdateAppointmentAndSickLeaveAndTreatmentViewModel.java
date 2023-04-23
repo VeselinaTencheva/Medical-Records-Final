@@ -1,14 +1,12 @@
 package com.example.Medical.Records.v10.data.view.model.appointments;
 
-import com.example.Medical.Records.v10.data.entity.Diagnosis;
-import com.example.Medical.Records.v10.data.entity.Patient;
-import com.example.Medical.Records.v10.data.entity.physicians.Physician;
+import com.example.Medical.Records.v10.entity.Diagnosis;
+import com.example.Medical.Records.v10.entity.Patient;
+import com.example.Medical.Records.v10.entity.physicians.Physician;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import net.bytebuddy.asm.Advice;
-import net.bytebuddy.utility.nullability.MaybeNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;

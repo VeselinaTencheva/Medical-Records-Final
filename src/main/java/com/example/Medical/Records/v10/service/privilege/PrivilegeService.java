@@ -1,9 +1,6 @@
 package com.example.Medical.Records.v10.service.privilege;
 
-import com.example.Medical.Records.v10.data.entity.Privilege;
-import lombok.AllArgsConstructor;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Service;
+import com.example.Medical.Records.v10.entity.Privilege;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.example.Medical.Records.v10.service.user;
 
-import com.example.Medical.Records.v10.data.entity.User;
+import com.example.Medical.Records.v10.entity.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 

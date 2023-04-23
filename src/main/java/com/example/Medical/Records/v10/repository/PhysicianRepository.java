@@ -1,6 +1,6 @@
-package com.example.Medical.Records.v10.data.repository;
+package com.example.Medical.Records.v10.repository;
 
-import com.example.Medical.Records.v10.data.entity.physicians.Physician;
+import com.example.Medical.Records.v10.entity.physicians.Physician;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PhysicianRepository extends JpaRepository<Physician, Long>  {

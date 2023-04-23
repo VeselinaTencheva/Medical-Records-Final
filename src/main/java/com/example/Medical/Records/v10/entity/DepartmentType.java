@@ -1,4 +1,4 @@
-package com.example.Medical.Records.v10.data.entity;
+package com.example.Medical.Records.v10.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.example.Medical.Records.v10.data.entity;
+package com.example.Medical.Records.v10.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +8,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Setter

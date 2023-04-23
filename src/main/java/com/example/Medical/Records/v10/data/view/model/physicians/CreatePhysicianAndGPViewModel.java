@@ -1,6 +1,6 @@
 package com.example.Medical.Records.v10.data.view.model.physicians;
 
-import com.example.Medical.Records.v10.data.entity.DepartmentType;
+import com.example.Medical.Records.v10.entity.DepartmentType;
 import com.example.Medical.Records.v10.data.view.model.users.CreateUserViewModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,12 +1,9 @@
 package com.example.Medical.Records.v10.data.view.controller;
 
-import com.example.Medical.Records.v10.data.entity.DepartmentType;
-import com.example.Medical.Records.v10.data.entity.physicians.Physician;
-import com.example.Medical.Records.v10.data.view.model.patients.PatientViewModel;
+import com.example.Medical.Records.v10.entity.DepartmentType;
 import com.example.Medical.Records.v10.data.view.model.physicians.CreatePhysicianAndGPViewModel;
 import com.example.Medical.Records.v10.data.view.model.physicians.PhysiciansViewModel;
 import com.example.Medical.Records.v10.data.view.model.physicians.UpdatePhysicianAndGPViewModel;
-import com.example.Medical.Records.v10.dto.physician.CreatePhysicianDTO;
 import com.example.Medical.Records.v10.dto.physician.PhysicianDTO;
 import com.example.Medical.Records.v10.dto.physician.UpdatePhysicianDTO;
 import com.example.Medical.Records.v10.service.physician.PhysicianService;
@@ -19,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller

@@ -1,7 +1,6 @@
 package com.example.Medical.Records.v10.service.diagnosis;
 
-import com.example.Medical.Records.v10.data.entity.Appointment;
-import com.example.Medical.Records.v10.data.entity.Diagnosis;
+import com.example.Medical.Records.v10.entity.Appointment;
 import com.example.Medical.Records.v10.dto.diagnoses.CreateDiagnoseDTO;
 import com.example.Medical.Records.v10.dto.diagnoses.DiagnoseDTO;
 import com.example.Medical.Records.v10.dto.diagnoses.UpdateDiagnoseDTO;

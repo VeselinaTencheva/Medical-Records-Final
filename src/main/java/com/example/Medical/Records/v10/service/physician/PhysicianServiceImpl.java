@@ -1,9 +1,8 @@
 package com.example.Medical.Records.v10.service.physician;
 
-import com.example.Medical.Records.v10.data.entity.physicians.Physician;
-import com.example.Medical.Records.v10.data.repository.PatientRepository;
-import com.example.Medical.Records.v10.data.repository.PhysicianRepository;
-import com.example.Medical.Records.v10.dto.physician.CreateGeneralPractitionerDTO;
+import com.example.Medical.Records.v10.entity.physicians.Physician;
+import com.example.Medical.Records.v10.repository.PatientRepository;
+import com.example.Medical.Records.v10.repository.PhysicianRepository;
 import com.example.Medical.Records.v10.dto.physician.CreatePhysicianDTO;
 import com.example.Medical.Records.v10.dto.physician.PhysicianDTO;
 import com.example.Medical.Records.v10.dto.physician.UpdatePhysicianDTO;

@@ -1,6 +1,6 @@
-package com.example.Medical.Records.v10.data.repository;
+package com.example.Medical.Records.v10.repository;
 
-import com.example.Medical.Records.v10.data.entity.User;
+import com.example.Medical.Records.v10.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

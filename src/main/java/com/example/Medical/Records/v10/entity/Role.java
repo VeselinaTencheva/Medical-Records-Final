@@ -1,6 +1,4 @@
-package com.example.Medical.Records.v10.data.entity;
-import com.example.Medical.Records.v10.data.entity.BaseEntity;
-import com.example.Medical.Records.v10.data.entity.User;
+package com.example.Medical.Records.v10.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

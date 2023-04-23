@@ -1,8 +1,8 @@
-package com.example.Medical.Records.v10.data.repository;
+package com.example.Medical.Records.v10.repository;
 
-import com.example.Medical.Records.v10.data.entity.Appointment;
-import com.example.Medical.Records.v10.data.entity.Diagnosis;
-import com.example.Medical.Records.v10.data.entity.Patient;
+import com.example.Medical.Records.v10.entity.Appointment;
+import com.example.Medical.Records.v10.entity.Diagnosis;
+import com.example.Medical.Records.v10.entity.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

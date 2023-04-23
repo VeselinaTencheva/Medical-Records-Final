@@ -1,6 +1,6 @@
 package com.example.Medical.Records.v10.dto.api;
 
-import com.example.Medical.Records.v10.data.entity.Appointment;
+import com.example.Medical.Records.v10.entity.Appointment;
 import com.example.Medical.Records.v10.dto.appointment.AppointmentDTO;
 import com.example.Medical.Records.v10.dto.appointment.CreateAppointmentDTO;
 import com.example.Medical.Records.v10.dto.appointment.UpdateAppointmentDTO;

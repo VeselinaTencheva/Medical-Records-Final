@@ -1,6 +1,5 @@
 package com.example.Medical.Records.v10.service.patient;
 
-import com.example.Medical.Records.v10.data.entity.Patient;
 import com.example.Medical.Records.v10.dto.diagnoses.DiagnoseDTO;
 import com.example.Medical.Records.v10.dto.patient.CreatePatientDTO;
 import com.example.Medical.Records.v10.dto.patient.PatientDTO;

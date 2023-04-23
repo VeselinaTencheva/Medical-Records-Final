@@ -1,7 +1,7 @@
 package com.example.Medical.Records.v10.service.role;
 
-import com.example.Medical.Records.v10.data.entity.Role;
-import com.example.Medical.Records.v10.data.repository.RoleRepository;
+import com.example.Medical.Records.v10.entity.Role;
+import com.example.Medical.Records.v10.repository.RoleRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

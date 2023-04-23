@@ -1,6 +1,6 @@
 package com.example.Medical.Records.v10.service.role;
 
-import com.example.Medical.Records.v10.data.entity.Role;
+import com.example.Medical.Records.v10.entity.Role;
 
 import java.util.List;
 

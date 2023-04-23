@@ -1,8 +1,8 @@
 package com.example.Medical.Records.v10.service.sickLeave;
 
-import com.example.Medical.Records.v10.data.entity.Appointment;
-import com.example.Medical.Records.v10.data.entity.SickLeave;
-import com.example.Medical.Records.v10.data.repository.SickLeaveRepository;
+import com.example.Medical.Records.v10.entity.Appointment;
+import com.example.Medical.Records.v10.entity.SickLeave;
+import com.example.Medical.Records.v10.repository.SickLeaveRepository;
 import com.example.Medical.Records.v10.dto.sickLeave.CreateSickLeaveDTO;
 import com.example.Medical.Records.v10.dto.sickLeave.SickLeaveDTO;
 import com.example.Medical.Records.v10.dto.sickLeave.UpdateSickLeaveDTO;

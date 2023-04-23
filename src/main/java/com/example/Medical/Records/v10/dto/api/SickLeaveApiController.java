@@ -1,6 +1,5 @@
 package com.example.Medical.Records.v10.dto.api;
 
-import com.example.Medical.Records.v10.data.entity.SickLeave;
 import com.example.Medical.Records.v10.data.view.model.sickLeaves.SickLeaveViewModel;
 import com.example.Medical.Records.v10.dto.sickLeave.CreateSickLeaveDTO;
 import com.example.Medical.Records.v10.dto.sickLeave.SickLeaveDTO;

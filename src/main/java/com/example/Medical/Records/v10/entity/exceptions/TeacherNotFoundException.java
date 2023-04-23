@@ -1,4 +1,4 @@
-package com.example.Medical.Records.v10.exceptions;
+package com.example.Medical.Records.v10.entity.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

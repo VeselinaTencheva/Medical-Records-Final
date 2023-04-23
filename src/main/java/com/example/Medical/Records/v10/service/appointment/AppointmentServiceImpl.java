@@ -1,8 +1,8 @@
 package com.example.Medical.Records.v10.service.appointment;
 
-import com.example.Medical.Records.v10.data.entity.Appointment;
-import com.example.Medical.Records.v10.data.entity.Patient;
-import com.example.Medical.Records.v10.data.repository.AppointmentRepository;
+import com.example.Medical.Records.v10.entity.Appointment;
+import com.example.Medical.Records.v10.entity.Patient;
+import com.example.Medical.Records.v10.repository.AppointmentRepository;
 import com.example.Medical.Records.v10.dto.appointment.AppointmentDTO;
 import com.example.Medical.Records.v10.dto.appointment.CreateAppointmentDTO;
 import com.example.Medical.Records.v10.dto.appointment.UpdateAppointmentDTO;

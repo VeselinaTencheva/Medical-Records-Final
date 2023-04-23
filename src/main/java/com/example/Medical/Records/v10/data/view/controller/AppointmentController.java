@@ -1,9 +1,6 @@
 package com.example.Medical.Records.v10.data.view.controller;
 
-import com.example.Medical.Records.v10.data.entity.*;
 import com.example.Medical.Records.v10.data.view.model.appointments.*;
-import com.example.Medical.Records.v10.data.view.model.physicians.PhysiciansViewModel;
-import com.example.Medical.Records.v10.data.view.model.physicians.UpdatePhysicianAndGPViewModel;
 import com.example.Medical.Records.v10.data.view.model.sickLeaves.CreateSickLeaveViewModel;
 import com.example.Medical.Records.v10.data.view.model.sickLeaves.UpdateSickLeaveViewModel;
 import com.example.Medical.Records.v10.data.view.model.treatments.CreateTreatmentViewModel;
@@ -17,6 +14,8 @@ import com.example.Medical.Records.v10.dto.sickLeave.UpdateSickLeaveDTO;
 import com.example.Medical.Records.v10.dto.treatment.CreateTreatmentDTO;
 import com.example.Medical.Records.v10.dto.treatment.TreatmentDTO;
 import com.example.Medical.Records.v10.dto.treatment.UpdateTreatmentDTO;
+import com.example.Medical.Records.v10.entity.SickLeave;
+import com.example.Medical.Records.v10.entity.Treatment;
 import com.example.Medical.Records.v10.service.appointment.AppointmentService;
 import com.example.Medical.Records.v10.service.diagnosis.DiagnosisService;
 import com.example.Medical.Records.v10.service.patient.PatientService;

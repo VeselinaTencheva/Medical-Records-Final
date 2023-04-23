@@ -1,6 +1,6 @@
 package com.example.Medical.Records.v10.dto.patient;
 
-import com.example.Medical.Records.v10.data.entity.physicians.Physician;
+import com.example.Medical.Records.v10.entity.physicians.Physician;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

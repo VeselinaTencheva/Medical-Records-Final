@@ -1,13 +1,11 @@
 package com.example.Medical.Records.v10.data.view.model.appointments;
 
-import com.example.Medical.Records.v10.data.entity.Diagnosis;
-import com.example.Medical.Records.v10.data.entity.Patient;
-import com.example.Medical.Records.v10.data.entity.SickLeave;
-import com.example.Medical.Records.v10.data.entity.Treatment;
-import com.example.Medical.Records.v10.data.entity.physicians.Physician;
+import com.example.Medical.Records.v10.entity.Diagnosis;
+import com.example.Medical.Records.v10.entity.Patient;
+import com.example.Medical.Records.v10.entity.SickLeave;
+import com.example.Medical.Records.v10.entity.Treatment;
+import com.example.Medical.Records.v10.entity.physicians.Physician;
 import lombok.*;
-import net.bytebuddy.utility.nullability.MaybeNull;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;

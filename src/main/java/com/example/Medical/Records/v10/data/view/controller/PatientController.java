@@ -1,6 +1,5 @@
 package com.example.Medical.Records.v10.data.view.controller;
 
-import com.example.Medical.Records.v10.data.entity.Patient;
 import com.example.Medical.Records.v10.data.view.model.diagnoses.DiagnoseViewModel;
 import com.example.Medical.Records.v10.data.view.model.patients.CreatePatientViewModel;
 import com.example.Medical.Records.v10.data.view.model.patients.PatientViewModel;

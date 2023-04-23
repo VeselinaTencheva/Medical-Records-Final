@@ -1,9 +1,8 @@
-package com.example.Medical.Records.v10.data.entity.physicians;
+package com.example.Medical.Records.v10.entity.physicians;
 
-import com.example.Medical.Records.v10.data.entity.Department;
-import com.example.Medical.Records.v10.data.entity.DepartmentType;
-import com.example.Medical.Records.v10.data.entity.User;
-import com.example.Medical.Records.v10.data.entity.Appointment;
+import com.example.Medical.Records.v10.entity.Department;
+import com.example.Medical.Records.v10.entity.User;
+import com.example.Medical.Records.v10.entity.Appointment;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,10 +1,10 @@
 package com.example.Medical.Records.v10.dto.appointment;
 
-import com.example.Medical.Records.v10.data.entity.Diagnosis;
-import com.example.Medical.Records.v10.data.entity.Patient;
-import com.example.Medical.Records.v10.data.entity.SickLeave;
-import com.example.Medical.Records.v10.data.entity.Treatment;
-import com.example.Medical.Records.v10.data.entity.physicians.Physician;
+import com.example.Medical.Records.v10.entity.Diagnosis;
+import com.example.Medical.Records.v10.entity.Patient;
+import com.example.Medical.Records.v10.entity.SickLeave;
+import com.example.Medical.Records.v10.entity.Treatment;
+import com.example.Medical.Records.v10.entity.physicians.Physician;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
