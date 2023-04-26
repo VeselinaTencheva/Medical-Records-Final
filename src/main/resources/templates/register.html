@@ -1,113 +1,104 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Electronic Medical Record System</title>
-    <meta charset="UTF-8">
-    <link href="/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
-    <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/common.css}"/>
-    <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-    <script type="text/javascript" th:src="@{/js/actions.js}"></script>
+<head th:replace="fragments :: head">
 </head>
-<body class="register-page">
-<div class="row h-100 w-100 m-0">
-    <div class="col d-flex align-items-center">
-        <div class="container ">
-            <h1 class="center-text font-weight-bold">Electronic Medical Records</h1>
-            <br>
-            <h2 class="center-text">Sign Up For Physician</h2>
-
-            <div class="d-flex justify-content-center my-5">
-                <form class="w-50" name="register" th:action="@{/register}" th:object="${physician}" method="post">
-                    <fieldset>
-                        <!--                        <div th:if="${param.logout}" class="alert alert-success">You have been logged out. </div>-->
-                        <div class="row">
-                            <div class="col form-group">
-                                <input type="text" class="form-control w-100"  id="username" th:field="${physician.username}" name="username"
-                                       placeholder="Username">
-                                <span class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span>
-                            </div>
-                            <div class="col form-group">
-                                <input type="text" class="form-control w-100" id="medicalUUID" th:field="${physician.medicalUUID}" name="medicalUUID"
-                                       placeholder="Medical UUID">
-                                <span class="text-danger" th:if="${#fields.hasErrors('medicalUUID')}" th:errors="*{medicalUUID}">Medical UUID Error</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col">
-                                <input type="password" class="form-control w-100" id="password" th:field="${physician.password}" name="password"
-                                       placeholder="Password">
-                                <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
-                            </div>
-                            <div class="form-group col">
-                                <input type="password" class="form-control w-100" id="confirmPassword" th:field="${physician.confirmPassword}" name="repeatPassword"
-                                       placeholder="Confirm Password">
-                                <span class="text-danger" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Confirm Password Error</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col">
-                                <input type="text" class="form-control w-100" id="firstName" th:field="${physician.firstName}" name="firstName"
-                                       placeholder="First Name">
-                                <span class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</span>
-                            </div>
-                            <div class="form-group col">
-                                <input type="text" class="form-control w-100" id="lastName"  th:field="${physician.lastName}"name="lastName"
-                                       placeholder="Last Name">
-                                <span class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</span>
-                            </div>
-                        </div>
-
-<!--                        select for a GP-->
-                        <input type="checkbox" th:onclick="showGPForm()" id="isGP">
-                        <label for="isGP" class="font-weight-bold">I'm a General Practitioner (GP)</label><br>
-                        <div class="row" id="showGPForm">
-                            <!-- content -->
-                            <div class="col-6 form-group">
-                                <input type="text" class="form-control" id="practiceCode" th:field="${physician.practiceCode}" name="practiceCode"
-                                       placeholder="Practice Code">
-                                <span class="text-danger" th:if="${#fields.hasErrors('practiceCode')}" th:errors="*{practiceCode}">Practice Code Error</span>
-                            </div>
-                            <div class="col-6 form-group">
-                                <input type="text" class="form-control" id="workPlace" th:field="${physician.practiceAddress}" name="practiceAddress"
-                                       placeholder="Practice Address">
-                                <span class="text-danger" th:if="${#fields.hasErrors('practiceAddress')}" th:errors="*{practiceAddress}">Practice Address Error</span>
-                            </div>
-                        </div>
-                        <!--                        select for a MS-->
-                        <input type="checkbox" th:onclick="showMSForm()" id="isMS">
-                        <label for="isMS" class="font-weight-bold">I'm a Medical Specialist (MS)</label><br>
-                        <div id="showMSForm">
+<body>
+    <div class="row h-100 w-100 m-0">
+        <div class="col d-flex align-items-center">
+            <div class="container">
+                <h1 class="center-text font-weight-bold">Electronic Medical Records</h1>
+                <br>
+                <h2 class="center-text">Sign Up For Physician</h2>
+                <div class="d-flex justify-content-center my-5">
+                    <form class="w-50" name="register" th:action="@{/register}" th:object="${physician}" method="post">
+                        <fieldset>
+                            <!--                        <div th:if="${param.logout}" class="alert alert-success">You have been logged out. </div>-->
                             <div class="row">
-                                <div class="col-6">
-                                    <label class="font-weight-bold">Department</label>
+                                <div class="col form-group">
+                                    <input type="text" class="form-control w-100"  id="username" th:field="${physician.username}" name="username"
+                                           placeholder="Username">
+                                    <span class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span>
                                 </div>
-                                <div class="col-6">
-                                        <div class="dropdown-content">
-                                            <h6 class="dropdown-header">Select Department</h6>
-                                            <th:block th:each="department : ${departments}">
-                                                <label class="dropdown-item">
-                                                    <input type="checkbox" name="department" th:value="${department.name}"/>
-                                                    <span class="ml-1" th:text="${department.value}"></span>
-                                                </label>
-                                            </th:block>
-                                        </div>
+                                <div class="col form-group">
+                                    <input type="text" class="form-control w-100" id="medicalUUID" th:field="${physician.medicalUUID}" name="medicalUUID"
+                                           placeholder="Medical UUID">
+                                    <span class="text-danger" th:if="${#fields.hasErrors('medicalUUID')}" th:errors="*{medicalUUID}">Medical UUID Error</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-actions mt-3 d-flex justify-content-center" >
-                            <button type="submit" class="btn w-50">Sign Up</button>
-                        </div>
-                        <div class="mt-2 d-flex justify-content-center">
-                            <h5>Already have an account?  </h5>
-                            <a th:href="@{/login}" class="forgot-password underline px-2 fs-16" href="">Sign in</a>
-                        </div>
-                    </fieldset>
-                </form>
+                            <div class="row">
+                                <div class="form-group col">
+                                    <input type="password" class="form-control w-100" id="password" th:field="${physician.password}" name="password"
+                                           placeholder="Password">
+                                    <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</span>
+                                </div>
+                                <div class="form-group col">
+                                    <input type="password" class="form-control w-100" id="confirmPassword" th:field="${physician.confirmPassword}" name="repeatPassword"
+                                           placeholder="Confirm Password">
+                                    <span class="text-danger" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Confirm Password Error</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col">
+                                    <input type="text" class="form-control w-100" id="firstName" th:field="${physician.firstName}" name="firstName"
+                                           placeholder="First Name">
+                                    <span class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</span>
+                                </div>
+                                <div class="form-group col">
+                                    <input type="text" class="form-control w-100" id="lastName"  th:field="${physician.lastName}"name="lastName"
+                                           placeholder="Last Name">
+                                    <span class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</span>
+                                </div>
+                            </div>
+
+    <!--                        select for a GP-->
+                            <input type="checkbox" th:onclick="showGPForm()" id="isGP">
+                            <label for="isGP" class="font-weight-bold">I'm a General Practitioner (GP)</label><br>
+                            <div class="row" id="showGPForm">
+                                <div class="col-6 form-group">
+                                    <input type="text" class="form-control" id="practiceCode" th:field="${physician.practiceCode}" name="practiceCode"
+                                           placeholder="Practice Code">
+                                    <span class="text-danger" th:if="${#fields.hasErrors('practiceCode')}" th:errors="*{practiceCode}">Practice Code Error</span>
+                                </div>
+                                <div class="col-6 form-group">
+                                    <input type="text" class="form-control" id="workPlace" th:field="${physician.practiceAddress}" name="practiceAddress"
+                                           placeholder="Practice Address">
+                                    <span class="text-danger" th:if="${#fields.hasErrors('practiceAddress')}" th:errors="*{practiceAddress}">Practice Address Error</span>
+                                </div>
+                            </div>
+                            <!--                        select for a MS-->
+                            <input type="checkbox" th:onclick="showMSForm()" id="isMS">
+                            <label for="isMS" class="font-weight-bold">I'm a Medical Specialist (MS)</label><br>
+                            <div id="showMSForm">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label class="font-weight-bold">Department</label>
+                                    </div>
+                                    <div class="col-6">
+                                            <div class="dropdown-content">
+                                                <h6 class="dropdown-header">Select Department</h6>
+                                                <th:block th:each="department : ${departments}">
+                                                    <label class="dropdown-item">
+                                                        <input type="checkbox" name="department" th:value="${department.name}"/>
+                                                        <span class="ml-1" th:text="${department.value}"></span>
+                                                    </label>
+                                                </th:block>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions mt-3 d-flex justify-content-center" >
+                                    <button type="submit" class="btn w-50">Sign Up</button>
+                                </div>
+                                <div class="mt-2 d-flex justify-content-center">
+                                    <h5>Already have an account?  </h5>
+                                    <a th:href="@{/login}" class="forgot-password underline px-2 fs-16" href="">Sign in</a>
+                                </div>
+                            </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
 

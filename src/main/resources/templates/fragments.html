@@ -3,32 +3,45 @@
 <head th:fragment="head">
     <title>Electronic Medical Record System</title>
     <meta charset="UTF-8">
+    <!-- Add viewport meta tag to ensure proper rendering and zooming of the page -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Add a favicon to the page -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+    <!-- Link the Bootstrap CSS stylesheet -->
     <link href="/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <!-- Link the common CSS stylesheet -->
     <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/common.css}"/>
+    <!-- Load jQuery from a CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.js}"></script>
-    <script type="text/javascript" th:src="@{/js/actions.js}"></script>
+    <!-- Add a custom JavaScript file for the page -->
+    <script type="text/javascript" src="/js/actions.js"></script>
 </head>
 
-<header th:fragment="header" class=" p-3" style="background-color: #0c5460; color: whitesmoke; width: 100%;">
+<header th:fragment="header" class="p-3 body-header">
     <div class="d-flex justify-content-between px-3">
         <h1 class="font-weight-bold">Electronic Medical Record System</h1>
-        <a th:href="@{/logout}">Logout</a>
     </div>
 </header>
 
 <side-nav>
-    <div class="sidenav h-100 mt-auto mb-auto">
-        <a href="#">My Profile</a>
-        <a href="/appointments">Appointments</a>
-        <a href="/patients">Patients</a>
-        <a href="/physicians">Physicians</a>
-<!--        <a href="#">Medical Specialists</a>-->
-        <a href="/diagnosis">Diagnosis</a>
-        <a href="/sick-leaves">Sick Leaves</a>
-        <a href="/treatments">Treatments</a>
-        <a href="#">About</a>
+    <div class="sidenav h-100 d-flex flex-column justify-content-between">
+        <div>
+            <a href="#">My Profile</a>
+            <a href="/appointments">Appointments</a>
+            <a href="/patients">Patients</a>
+            <a href="/physicians">Physicians</a>
+            <a href="/diagnosis">Diagnosis</a>
+            <a href="/sick-leaves">Sick Leaves</a>
+            <a href="/treatments">Treatments</a>
+            <a href="#">About</a>
+        </div>
+        <div>
+            <a th:href="@{/logout}"><i class="bi bi-box-arrow-left"></i></a>
+        </div>
     </div>
 </side-nav>
 
