@@ -17,7 +17,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.jetbrains:annotations:23.0.0'
+	implementation 'org.jetbrains:annotations:24.0.1'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
     compileOnly group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
 	compileOnly 'org.projectlombok:lombok'

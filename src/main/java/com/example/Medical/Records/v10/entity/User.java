@@ -19,10 +19,15 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User extends BaseEntity implements UserDetails  {
 
-    @Column(name = "name", nullable = false)
-    @NotBlank(message = "Name is mandatory")
-    @Size(min = 5, max=30, message = "Name must be between 5 and 30 characters")
-    private String name;
+    @Column(name = "first_name", nullable = false)
+    @NotBlank(message = "First Name is mandatory")
+    @Size(min = 5, max=30, message = "First Name must be between 5 and 30 characters")
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    @NotBlank(message = "Last Name is mandatory")
+    @Size(min = 5, max=30, message = "Last Name must be between 5 and 30 characters")
+    private String lastName;
 
     @Column(name = "username", nullable = false, unique = true)
     private String username;

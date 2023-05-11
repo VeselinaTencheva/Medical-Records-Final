@@ -13,10 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@Entity
+@MappedSuperclass
 public class Physician extends User {
 //TODO think about this to become an abstract class
     @Column(name = "medical_uuid", nullable = false, unique = true)
@@ -24,8 +21,15 @@ public class Physician extends User {
     @Size(min = 6, max = 6, message="\"Medical UUID must be exact 6")
     private String medicalUUID;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Department> departments;
+//    @Column(name = "practice_code")
+//    @Size(min = 5, max = 5, message="Exact 5")
+//    private String practiceCode;
+//
+//    @Column(name = "practice_address")
+//    private String practiceAddress;
+
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    private Set<Department> departments;
 
     @OneToMany(mappedBy = "physician")
     @JsonIgnoreProperties("physician")

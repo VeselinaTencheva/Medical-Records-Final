@@ -1,9 +1,6 @@
 package com.example.Medical.Records.v10.config;
 
-import com.example.Medical.Records.v10.entity.Department;
-import com.example.Medical.Records.v10.entity.DepartmentType;
-import com.example.Medical.Records.v10.entity.Privilege;
-import com.example.Medical.Records.v10.entity.Role;
+import com.example.Medical.Records.v10.entity.*;
 import com.example.Medical.Records.v10.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
@@ -116,8 +115,9 @@ public class DbInit implements CommandLineRunner {
 //                Role adminRole = roleRepository.findByAuthority("ROLE_ADMIN");
 //        User user = new User();
 //
-////        user.setId(UUID.randomUUID());
-//        user.setName("Veselina");
+//        user.setId(UUID.randomUUID());
+//        user.setFirstName("Veselina");
+//        user.setLastName("Tencheva");
 //        user.setPassword(encoder.encode("vesi"));
 //        user.setUsername("veselina");
 //        user.setRoles(Arrays.asList(adminRole).stream().collect(Collectors.toSet()));
@@ -205,12 +205,12 @@ public class DbInit implements CommandLineRunner {
 //        user2.setCredentialsNonExpired(true);
 ////
 //        List<User> users = Arrays.asList(user, user2);
-//
-//        // Save to db
-//        this.userRepository.saveAll(users);
 
-         // Save departments to db
-        this.createDepartments();
+        // Save to db
+//        this.userRepository.save(user);
+//
+//         // Save departments to db
+//        this.createDepartments();
 
 
     }

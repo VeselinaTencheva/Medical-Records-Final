@@ -1,6 +1,6 @@
 package com.example.Medical.Records.v10.entity;
 
-import com.example.Medical.Records.v10.entity.physicians.Physician;
+import com.example.Medical.Records.v10.entity.physicians.GeneralPractitioner;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,9 +27,9 @@ public class Patient extends User {
     private boolean hasInsurance;
 
     @ManyToOne
-    @JoinColumn(name = "physician_id")
+    @JoinColumn(name = "gp_id")
     @NotNull(message = "Physician is mandatory")
-    private Physician physician;
+    private GeneralPractitioner generalPractitioner;
 
     @OneToMany(mappedBy = "patient")
     @JsonIgnoreProperties("patient")
